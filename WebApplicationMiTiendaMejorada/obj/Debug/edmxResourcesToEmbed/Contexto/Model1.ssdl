@@ -18,6 +18,13 @@
     <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre_proveedor" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="id_ventas" />
+    </Key>
+    <Property Name="id_ventas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="venta_total" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK__Producto__id_pro__0519C6AF">
     <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
@@ -33,6 +40,7 @@
   <EntityContainer Name="MiTiendaMejoradaModelStoreContainer">
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Producto__id_pro__0519C6AF" Association="Self.FK__Producto__id_pro__0519C6AF">
       <End Role="Proveedor" EntitySet="Proveedor" />
       <End Role="Producto" EntitySet="Producto" />

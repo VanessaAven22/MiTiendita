@@ -27,5 +27,6 @@ namespace WebApplicationMiTiendaMejorada.Contexto
     
         public virtual DbSet<Producto> Productoes { get; set; }
         public virtual DbSet<Proveedor> Proveedors { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
     }
 }

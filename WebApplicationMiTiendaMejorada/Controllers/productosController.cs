@@ -150,10 +150,17 @@ namespace WebApplicationMiTiendaMejorada.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ventaProductos([Bind(Include = "id_producto,producto_nombre,producto_precio,producto_cantidad,producto_descripcion,id_proveedor")] Producto producto)
+        public ActionResult ventaProductos([Bind(Include = "id_producto,producto_nombre,producto_precio,producto_cantidad,producto_descripcion,id_proveedor")] Producto producto, int cantidadProducto, int precioVenta)
         {
             if (ModelState.IsValid)
             {
+                Venta ventas = new Venta();
+                ventas.id_ventas++;
+                ventas.venta_total = precioVenta;
+
+                db.Ventas.Add(ventas);
+
+                producto.producto_cantidad = producto.producto_cantidad - cantidadProducto;
                 db.Entry(producto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -163,6 +170,16 @@ namespace WebApplicationMiTiendaMejorada.Controllers
         }
 
 
+        public ActionResult precioDeVenta(int id_Producto, int cantidad_producto)
+        {
+            var valorProducto = (from producto in db.Productoes
+                                 where producto.id_producto == id_Producto
+                                 select producto.producto_precio).FirstOrDefault();
+
+            int valor = int.Parse(valorProducto.ToString());
+
+            return Content((valor * cantidad_producto).ToString());
+        }
     }
 
 }

@@ -39,5 +39,13 @@
       <End Role="Proveedor" EntitySet="Proveedors" />
       <End Role="Producto" EntitySet="Productoes" />
     </AssociationSet>
+    <EntitySet Name="Ventas" EntityType="MiTiendaMejoradaModel.Venta" />
   </EntityContainer>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="id_ventas" />
+    </Key>
+    <Property Name="id_ventas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="venta_total" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

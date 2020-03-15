@@ -1,0 +1,26 @@
+﻿@model WebApplicationMiTiendaMejorada.Contexto.Venta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.venta_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venta_total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_ventas }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -21,5 +21,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="MiTiendaMejoradaModel.Venta">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="venta_total" ColumnName="venta_total" />
+          <ScalarProperty Name="id_ventas" ColumnName="id_ventas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

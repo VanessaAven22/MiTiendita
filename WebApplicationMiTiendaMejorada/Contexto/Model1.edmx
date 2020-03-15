@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MiTiendaMejoradaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MiTiendaMejoradaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="id_producto" />
@@ -23,6 +23,13 @@
           <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_proveedor" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="id_ventas" />
+          </Key>
+          <Property Name="id_ventas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="venta_total" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Producto__id_pro__0519C6AF">
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
           <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
@@ -38,13 +45,13 @@
         <EntityContainer Name="MiTiendaMejoradaModelStoreContainer">
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Producto__id_pro__0519C6AF" Association="Self.FK__Producto__id_pro__0519C6AF">
             <End Role="Proveedor" EntitySet="Proveedor" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MiTiendaMejoradaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -87,7 +94,15 @@
             <End Role="Proveedor" EntitySet="Proveedors" />
             <End Role="Producto" EntitySet="Productoes" />
           </AssociationSet>
+          <EntitySet Name="Ventas" EntityType="MiTiendaMejoradaModel.Venta" />
         </EntityContainer>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="id_ventas" />
+          </Key>
+          <Property Name="id_ventas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="venta_total" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,6 +126,14 @@
               <MappingFragment StoreEntitySet="Proveedor">
                 <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
                 <ScalarProperty Name="nombre_proveedor" ColumnName="nombre_proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="MiTiendaMejoradaModel.Venta">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="venta_total" ColumnName="venta_total" />
+                <ScalarProperty Name="id_ventas" ColumnName="id_ventas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

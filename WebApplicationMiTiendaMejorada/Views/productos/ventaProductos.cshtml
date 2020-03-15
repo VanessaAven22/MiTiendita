@@ -4,9 +4,25 @@
     ViewBag.Title = "ventaProductos";
 }
 
-<h2>Venta de prodcutos de Mi Tienda Mejorada</h2>
+<h2>Venta de productos de Mi Tienda Mejorada</h2>
+<script src="@Url.Content("~/Scripts/jquery-3.3.1.js")" type="text/javacript" ></script>
 
+<script>
 
+	$(document).ready(function () {
+		$('#cantidadProducto').on('input', function () {
+			$.ajax({
+				data:{cantidad_producto:$('#cantidadProducto').val(),id_Producto:@Model.id_producto},
+				type: 'GET',
+				url: '@Url.Action("precioDeVenta","productos")',
+				success: function (resultado) {
+
+					$('#precioVenta').val(resultado);
+				}
+			});
+		});
+	});
+</script>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -56,12 +72,23 @@
 		</div>
 	</div>
 
+
+
+
 	<div class="form-group">
 		<label class="control-label col-md-2">Cantidad de Producto a Vender</label>
 		<div class="col-md-10">
 			<input type="text" class="form-control" id="cantidadProducto" name="cantidadProducto" placeholder="Cantidad" />
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-2">Precio de Venta</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="precioVenta" name="precioVenta"  />
+		</div>
+	</div>
+
 
 
 

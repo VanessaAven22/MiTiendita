@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MiTiendaMejoradaModelStoreContainer" CdmEntityContainer="MiTiendaMejoradaEntities">
+    <EntitySetMapping Name="Productoes">
+      <EntityTypeMapping TypeName="MiTiendaMejoradaModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="producto_nombre" ColumnName="producto_nombre" />
+          <ScalarProperty Name="producto_precio" ColumnName="producto_precio" />
+          <ScalarProperty Name="producto_cantidad" ColumnName="producto_cantidad" />
+          <ScalarProperty Name="producto_descripcion" ColumnName="producto_descripcion" />
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedors">
+      <EntityTypeMapping TypeName="MiTiendaMejoradaModel.Proveedor">
+        <MappingFragment StoreEntitySet="Proveedor">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="nombre_proveedor" ColumnName="nombre_proveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

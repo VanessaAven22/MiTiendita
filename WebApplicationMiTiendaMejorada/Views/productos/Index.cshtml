@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplicationMiTiendaMejorada.Contexto.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.producto_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.producto_precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.producto_cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.producto_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedor.nombre_proveedor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.producto_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.producto_precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.producto_cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.producto_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proveedor.nombre_proveedor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_producto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_producto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_producto })
+        </td>
+    </tr>
+}
+
+</table>
